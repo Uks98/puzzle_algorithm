@@ -5,21 +5,45 @@
 
 
 
+from ast import Try
+
+
 cap1 = ["F","F","B","B","B","F","B","B","B","F","F","B","F"]
 
 cap2 = ["F","F","B","B","B","F","B","B","B","F","F","F","F"]
 
+cap3 = []
 
-def flip_pass(caps):
-    caps = caps + [caps[0]]
-    for i in range(1,len(caps)):
-        if caps[i] != caps[i-1]: #i는 1부터 시작 i-1은 0부터 시작 서로 맞지 않을 시 구간으로 채택
+
+
+def pleaseConformOnepass(caps):
+    
+    if caps != []:
+        caps = caps + [caps[0]]
+    else:
+        print("오늘은 휴무입니다.")
+    start = []
+    end = []
+    
+    for i in range(1, len(caps)):
+        if caps[i] != caps[i-1]:
             if caps[i] != caps[0]:
-                print("서있는 순서대로",i,end = " ")
+                start.append(i)
+                print(start)
             else:
-                print("부터",i-1, "모자 방향 바꿔주세요")
+                end.append(i-1)
+                print(end,"엔드")
+ 
+    for j in range(len(start)):
+        if start[j]!=end[j]:
+            print(f"People in positions {start[j]} through {end[j]} flip your caps!")
+        else:
+            print(f"Person at position {start[j]} flip your cap!")
 
-flip_pass(cap1)
+    
+
+pleaseConformOnepass(cap3)
+
 # def pleaseConform(caps):
 #     start = forword = backword = 0
 #     itervals = []
